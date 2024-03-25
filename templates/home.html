@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+
+{%block nav%}
+{%if not user.is_authenticated%}
+    <a href="{% url 'signup' %}">signup</a> or 
+    <a href="{% url 'login' %}">login</a>
+{%endif%}
+
+{%if user.is_authenticated%}
+    <p>Hi {{ user.username }}!</p>
+    <form action="{% url 'logout'%}" method='post'>
+        {%csrf_token%}
+        <button type='submit'>logout</button> 
+        OR
+        <a href="{% url 'password_change' %}">change password</a>
+    </form>
+{%endif%}
+
+{%endblock%}
+
+
+{%block content%}
+Create a <a href='{% url 'create'%}'>new trip!</br></br></a>
+Trips list: <small>(click to see details and edit...)</small></br>
+
+{%for C in A%}
+    <a href={{C.id}} >{{C}}</br></a>
+{%endfor%}
+
+
+{%endblock%}
