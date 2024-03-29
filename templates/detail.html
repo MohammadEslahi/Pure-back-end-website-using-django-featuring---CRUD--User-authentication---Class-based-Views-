@@ -1,10 +1,15 @@
 {%extends 'base.html'%}
+{%load static%}
 
 {%block content%}
 
-<h1>{{A}} <small>details:</br>{{A.night}} nights</small></h1>
+<h1>{{A}} <small>details:</br>
+<img src="/static/{{A}}.JPG"></br>
+<img src="{{ A.image.url}}" alt="{{ A.title }}"></br>
+{{A.night}} nights</small></h1>
 <a href=" update/ "><small>edit this trip</small></a></br></br>
-<a href='delete'<h1>delete</h1>
+<a href='delete'>delete</a>
+
     
 
 {%endblock%}

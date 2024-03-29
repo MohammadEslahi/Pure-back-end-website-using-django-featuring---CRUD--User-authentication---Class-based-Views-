@@ -1,4 +1,5 @@
 {%extends 'base.html'%}
+{%load static%}
 
 {%block nav%}
 {%if not user.is_authenticated%}
@@ -23,9 +24,11 @@
 Create a <a href='{% url 'create'%}'>new trip!</br></br></a>
 Trips list: <small>(click to see details and edit...)</small></br>
 
-{%for C in A%}
-    <a href={{C.id}} >{{C}}</br></a>
-{%endfor%}
 
+{% for trip in object_list %}
 
+<a href="{{ trip.id }}">{{trip}}</a><br/>
+
+{% endfor %}
+   
 {%endblock%}

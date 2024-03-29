@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings  # new (to see static files!)
+from django.conf.urls.static import static  # new(to see static files!)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +27,6 @@ urlpatterns = [
     path('<pk>/delete/', include('delete.urls')),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls'), name='signup'),
+    
+
 ]
